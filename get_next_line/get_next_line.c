@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 17:52:41 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/17 23:54:13 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/03/18 23:04:00 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*fix_line(char *line)
 	while (line[i] != '\n' && line[i] != '\0')
 		i++;
 	if (line[i] == '\0')
-		i++;
+		return (NULL);
 	holder = ft_substr(line, i + 1, ft_strlen(line) + i);
 	if (!holder)
 		return (NULL);
