@@ -6,13 +6,14 @@
 #    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 18:42:27 by ssuchane          #+#    #+#              #
-#    Updated: 2024/03/20 23:03:59 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/03/21 16:12:49 by ssuchane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS := ft_putstr.c \
+SRCS := ft_itoa.c	\
+		ft_putstr.c \
 		ft_printf.c \
 
 OBJS := $(SRCS:.c=.o)
