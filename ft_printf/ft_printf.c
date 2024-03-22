@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:42:18 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/22 23:31:26 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/03/23 00:07:31 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,30 +64,33 @@ int	main(void)
 	unsigned int	og_function;
 	unsigned int	my_function;
 
+	ft_printf("Test with string\n");
 	og_function = printf("My name is %s, well %s ", a, b);
 	printf("%d\n", og_function);
 	my_function = ft_printf("My name is %s, well %s ", a, b);
-	printf("%d\n", my_function);
+	printf("%d\n\n", my_function);
 
 	char			c = 'A';
 	char			d = 'e';
 	unsigned int	og_function3;
 	unsigned int	my_function4;
 
+	ft_printf("Test with characters\n");
 	og_function3 = printf("My letter is %c, well don%c ", c, d);
 	printf("%d\n", og_function3);
 	my_function4 = ft_printf("My letter is %c, well don%c ", c, d);
-	printf("%d\n", my_function4);
+	printf("%d\n\n", my_function4);
 
 	int			e = 64523;
 	int			f = -42613;
 	unsigned int	og_function5;
 	unsigned int	my_function6;
 
+	ft_printf("Test with digits and integers\n");
 	og_function5 = printf("My digit is %d, and %i ", e, f);
 	printf("%d\n", og_function5);
 	my_function6 = ft_printf("My digit is %d, and %i ", e, f);
-	printf("%d\n", my_function6);
+	printf("%d\n\n", my_function6);
 
 	//int			g = 5;
 	int			*address1 = NULL;
@@ -96,20 +99,27 @@ int	main(void)
 	unsigned int	og_function7;
 	unsigned int	my_function8;
 
+
+	ft_printf("Test with address\n");
 	og_function7 = printf("My pointer address is %p, and %p ", address1, address2);
 	printf("%d\n", og_function7);
 	my_function8 = ft_printf("My pointer address is %p, and %p ", address1, address2);
-	printf("%d\n", my_function8);
+	printf("%d\n\n", my_function8);
 
 	int			i = 64523;
 	int			j = -42613;
 	unsigned int	og_function9;
 	unsigned int	my_function10;
 
+	ft_printf("Test with hexadecimal\n");
 	og_function9 = printf("My thingie is %x, and %X ", i, j);
 	printf("%d\n", og_function9);
 	my_function10 = ft_printf("My thingie is %x, and %X ", i, j);
-	printf("%d\n", my_function10);
+	printf("%d\n\n", my_function10);
+
+	ft_printf("Test with no format specifier\n");
+	ft_printf("%d\n", ft_printf("hello world "));
+	printf("%d\n\n", printf("hello world "));
 
 	return (0);
 }
