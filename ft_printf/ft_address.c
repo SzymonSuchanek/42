@@ -6,49 +6,49 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:09:41 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/22 21:18:33 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/03/22 23:23:51 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_hexa(unsigned long ptr)
+int	ft_hexa(unsigned long nbr)
 {
 	int	len;
 
 	len = 0;
-	if (ptr > 16)
+	if (nbr > 16)
 	{
-		ft_hexa(ptr / 16);
-		ft_hexa(ptr % 16);
+		ft_hexa(nbr / 16);
+		ft_hexa(nbr % 16);
 	}
 	else
 	{
-		if (ptr <= 9)
-			ft_putchar(ptr + '0');
+		if (nbr <= 9)
+			ft_putchar(nbr + '0');
 		else
-			ft_putchar(ptr - 10 + 'a');
+			ft_putchar(nbr - 10 + 'a');
 	}
-	while (ptr != 0)
+	while (nbr != 0)
 	{
 		len++;
-		ptr = ptr / 16;
+		nbr = nbr / 16;
 	}
 	return (len);
 }
 
-int	ft_address(unsigned long ptr)
+int	ft_address(unsigned long nbr)
 {
 	int	count;
 
 	count = 2;
-	if (ptr == 0)
+	if (nbr == 0)
 	{
 		write(1, "(nil)", 5);
 		return (5);
 	}
 	write(1, "0x", 2);
-	count += ft_hexa(ptr);
+	count += ft_hexa(nbr);
 	return (count);
 }
 

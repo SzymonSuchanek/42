@@ -6,41 +6,52 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:42:18 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/22 22:32:36 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/03/22 23:31:26 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_printf(const char *placeholders, ...)
+int	ft_print_conditions(const char placeholders, va_list args)
 {
-	va_list			args;
-	int				result;
+	int	result;
 
 	result = 0;
+	if (placeholders == 's')
+		result += ft_putstr(va_arg(args, const char *));
+	else if (placeholders == 'c')
+		result += ft_printchar(va_arg(args, int));
+	else if (placeholders == 'd' || placeholders == 'i')
+		result += ft_printitoa(va_arg(args, int));
+	else if (placeholders == 'p')
+		result += ft_address(va_arg(args, unsigned long));
+	else if (placeholders == 'x' || placeholders == 'X')
+		result += ft_printhex(va_arg(args, unsigned int), placeholders);
+	return (result);
+}
+
+int	ft_printf(const char *placeholders, ...)
+{
+	va_list	args;
+	int		result;
+	int		i;
+
+	result = 0;
+	i = 0;
 	va_start(args, placeholders);
-	while (*placeholders != '\0')
+	while (placeholders[i] != '\0')
 	{
-		if (*placeholders == '%')
+		if (placeholders[i] == '%')
 		{
-			placeholders++;
-			if (*placeholders == 's')
-				result += ft_putstr(va_arg(args, const char *));
-			else if (*placeholders == 'c')
-				result += ft_printchar(va_arg(args, int));
-			else if (*placeholders == 'd' || *placeholders == 'i')
-				result += ft_printitoa(va_arg(args, int));
-			else if (*placeholders == 'p')
-				result += ft_address(va_arg(args, unsigned long));
-			else if (*placeholders == 'x' || *placeholders == 'X')
-				result += ft_uplowhx(va_arg(args, unsigned int));
+			i++;
+			result += ft_print_conditions(placeholders[i], args);
 		}
-		else
+		else if (placeholders[i] != '%')
 		{
-			ft_putchar(*placeholders);
+			ft_putchar(placeholders[i]);
 			result++;
 		}
-		placeholders++;
+		i++;
 	}
 	va_end(args);
 	return (result);
@@ -89,6 +100,16 @@ int	main(void)
 	printf("%d\n", og_function7);
 	my_function8 = ft_printf("My pointer address is %p, and %p ", address1, address2);
 	printf("%d\n", my_function8);
+
+	int			i = 64523;
+	int			j = -42613;
+	unsigned int	og_function9;
+	unsigned int	my_function10;
+
+	og_function9 = printf("My thingie is %x, and %X ", i, j);
+	printf("%d\n", og_function9);
+	my_function10 = ft_printf("My thingie is %x, and %X ", i, j);
+	printf("%d\n", my_function10);
 
 	return (0);
 }
