@@ -1,54 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_uplowhx.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 16:13:22 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/22 22:20:58 by ssuchane         ###   ########.fr       */
+/*   Created: 2024/03/22 21:51:44 by ssuchane          #+#    #+#             */
+/*   Updated: 2024/03/22 22:39:11 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putchar(int c)
+int	ft_uplowhx(unsigned int ptr)
 {
-	write(1, &c, 1);
-}
+	int	len;
 
-int	ft_printchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
+	len = 0;
+	if (ptr > 16)
 	{
-		write(1, &s[i], 1);
-		i++;
+		ft_uplowhx(ptr / 16);
+		ft_uplowhx(ptr % 16);
 	}
-	return (i);
-}
-
-size_t	ft_putstr(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
+	else
 	{
-		write(1, &s[i], 1);
-		i++;
+		if (ptr <= 9)
+			ft_putchar(ptr + '0');
+		else
+			ft_putchar(ptr - 10 + 'a');
 	}
-	return (i);
+	while (ptr != 0)
+	{
+		len++;
+		ptr = ptr / 16;
+	}
+	return (len);
 }

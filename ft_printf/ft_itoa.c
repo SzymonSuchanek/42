@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:11:21 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/21 16:26:42 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/03/22 21:31:11 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,9 @@ char	*ft_itoa(int n)
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	return (ft_putnbr(str, n, digitcount));
+}
+
+int	ft_printitoa(int n)
+{
+	return (ft_putstr(ft_itoa(n)));
 }

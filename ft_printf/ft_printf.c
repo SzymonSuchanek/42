@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:42:18 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/21 16:32:04 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/03/22 22:32:36 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 int	ft_printf(const char *placeholders, ...)
 {
-	va_list		args;
-	int			result;
-	const char	*str;
-	char		c;
-	int			n;
+	va_list			args;
+	int				result;
 
 	result = 0;
 	va_start(args, placeholders);
@@ -28,22 +25,15 @@ int	ft_printf(const char *placeholders, ...)
 		{
 			placeholders++;
 			if (*placeholders == 's')
-			{
-				str = va_arg(args, const char *);
-				result += ft_putstr(str);
-			}
+				result += ft_putstr(va_arg(args, const char *));
 			else if (*placeholders == 'c')
-			{
-				c = va_arg(args, int);
-				ft_putchar(c);
-				result++;
-			}
+				result += ft_printchar(va_arg(args, int));
 			else if (*placeholders == 'd' || *placeholders == 'i')
-			{
-				n = va_arg(args, int);
-				write(1, ft_itoa(n), ft_count(n));
-				result += ft_count(n);
-			}
+				result += ft_printitoa(va_arg(args, int));
+			else if (*placeholders == 'p')
+				result += ft_address(va_arg(args, unsigned long));
+			else if (*placeholders == 'x' || *placeholders == 'X')
+				result += ft_uplowhx(va_arg(args, unsigned int));
 		}
 		else
 		{
@@ -83,20 +73,27 @@ int	main(void)
 	unsigned int	og_function5;
 	unsigned int	my_function6;
 
-	og_function5 = printf("MY digit is %d, and %i ", e, f);
+	og_function5 = printf("My digit is %d, and %i ", e, f);
 	printf("%d\n", og_function5);
-	my_function6 = ft_printf("MY digit is %d, and %i ", e, f);
+	my_function6 = ft_printf("My digit is %d, and %i ", e, f);
 	printf("%d\n", my_function6);
-	
+
+	//int			g = 5;
+	int			*address1 = NULL;
+	int			h = 6;
+	int			*address2 = &h;
+	unsigned int	og_function7;
+	unsigned int	my_function8;
+
+	og_function7 = printf("My pointer address is %p, and %p ", address1, address2);
+	printf("%d\n", og_function7);
+	my_function8 = ft_printf("My pointer address is %p, and %p ", address1, address2);
+	printf("%d\n", my_function8);
+
 	return (0);
 }
 
-
-		// if (*(++placeholders) == 'p')
-			
 		// if (*(++placeholders) == 'u')
-			
-		// if (*(++placeholders) == 'x' && *(placeholders) == 'X')
 			
 		// if (*(++placeholders) == '%')
 			
