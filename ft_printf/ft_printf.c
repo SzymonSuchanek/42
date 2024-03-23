@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:42:18 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/23 00:07:31 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/03/23 15:43:27 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,17 @@ int	ft_print_conditions(const char placeholders, va_list args)
 	if (placeholders == 's')
 		result += ft_putstr(va_arg(args, const char *));
 	else if (placeholders == 'c')
-		result += ft_printchar(va_arg(args, int));
+		result += ft_print_char(va_arg(args, int));
 	else if (placeholders == 'd' || placeholders == 'i')
 		result += ft_printitoa(va_arg(args, int));
 	else if (placeholders == 'p')
 		result += ft_address(va_arg(args, unsigned long));
 	else if (placeholders == 'x' || placeholders == 'X')
 		result += ft_printhex(va_arg(args, unsigned int), placeholders);
+	else if (placeholders == 'u')
+		result += (ft_print_uint(va_arg(args, unsigned int)));
+	else if (placeholders == '%')
+		result += ft_print_char('%');
 	return (result);
 }
 
@@ -121,10 +125,25 @@ int	main(void)
 	ft_printf("%d\n", ft_printf("hello world "));
 	printf("%d\n\n", printf("hello world "));
 
+	unsigned int	k = 4294967295;
+	unsigned int	l = 3435345221;
+	unsigned int	og_function11;
+	unsigned int	my_function12;
+
+	ft_printf("Test with hexadecimal\n");
+	og_function11 = printf("My unsigned int is %u, and %u ", k, l);
+	printf("%d\n", og_function11);
+	my_function12 = ft_printf("My unsigned int is %u, and %u ", k, l);
+	printf("%d\n\n", my_function12);
+
+	unsigned int	og_function13;
+	unsigned int	my_function14;
+
+	ft_printf("Test with hexadecimal\n");
+	og_function13 = printf("My %% is %% ");
+	printf("%d\n", og_function13);
+	my_function14 = ft_printf("My %% is %% ");
+	printf("%d\n\n", my_function14);
+
 	return (0);
 }
-
-		// if (*(++placeholders) == 'u')
-			
-		// if (*(++placeholders) == '%')
-			

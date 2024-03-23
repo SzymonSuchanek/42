@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_uint.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 21:47:43 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/21 16:13:50 by ssuchane         ###   ########.fr       */
+/*   Created: 2024/03/21 16:11:21 by ssuchane          #+#    #+#             */
+/*   Updated: 2024/03/23 15:38:26 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-size_t	ft_putstr(const char *s)
+int	ft_print_uint(unsigned int nbr)
 {
-	size_t	i;
+	int	len;
 
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
+	len = 0;
+	if (nbr > 10)
 	{
-		write(1, &s[i], 1);
-		i++;
+		ft_print_uint(nbr / 10);
+		ft_print_uint(nbr % 10);
 	}
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	else
+	{
+		if (nbr <= 9)
+			ft_putchar(nbr + '0');
+		else
+			ft_putchar(nbr - 10 + 'a');
+	}
+	while (nbr != 0)
+	{
+		len++;
+		nbr = nbr / 10;
+	}
+	return (len);
 }
