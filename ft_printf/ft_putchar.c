@@ -6,11 +6,11 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:13:22 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/23 15:45:31 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:18:07 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_putchar(int c)
 {

@@ -6,87 +6,51 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:11:21 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/23 13:52:48 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:53:49 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-char	*ft_strdup(const char *s)
+int	ft_print_int(int nbr)
 {
-	const char		*ptr;
-	char			*ptr2;
-	unsigned int	i;
+	int	len;
 
-	ptr = s;
-	i = 0;
-	ptr2 = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	if (!ptr2)
-		return (NULL);
-	while (ptr[i] != '\0')
+	len = 0;
+	if (nbr == 0 || nbr == -2147483648)
+		return (ft_edge_int(nbr));
+	else if (nbr >= 10)
 	{
-		ptr2[i] = ptr[i];
-		i++;
+		ft_print_int(nbr / 10);
+		ft_print_int(nbr % 10);
 	}
-	ptr2[i] = '\0';
-	return (ptr2);
+	else if (nbr < 0)
+	{
+		ft_print_char('-');
+		ft_print_int(-nbr);
+		len++;
+	}
+	else if (nbr <= 9)
+		ft_putchar(nbr + '0');
+	while (nbr != 0)
+	{
+		len++;
+		nbr = nbr / 10;
+	}
+	return (len);
 }
 
-int	ft_count(int n)
+int	ft_edge_int(int nbr)
 {
-	int	count;
-
-	count = 0;
-	if (n < 0)
+	if (nbr == 0)
 	{
-		n = -n;
-		count++;
+		write(1, "0", 1);
+		return (1);
 	}
-	while (n > 0)
+	else if (nbr == -2147483648)
 	{
-		count++;
-		n = n / 10;
+		write(1, "-2147483648", 11);
+		return (11);
 	}
-	return (count);
-}
-
-char	*ft_putnbr(char *str, int n, int digitcount)
-{
-	int	i;
-
-	i = 0;
-	if (n < 0)
-	{
-		str[0] = '-';
-		n = -n;
-	}
-	while (n != 0)
-	{
-		str[digitcount - 1 - i] = n % 10 + '0';
-		n = n / 10;
-		i++;
-	}
-	return (str);
-}
-
-char	*ft_itoa(int n)
-{
-	int		digitcount;
-	char	*str;
-
-	digitcount = ft_count(n);
-	if (n == 0)
-		return (ft_strdup("0"));
-	str = (char *)malloc(sizeof(char) * (digitcount + 1));
-	if (!str)
-		return (NULL);
-	str[digitcount] = '\0';
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	return (ft_putnbr(str, n, digitcount));
-}
-
-int	ft_printitoa(int n)
-{
-	return (ft_putstr(ft_itoa(n)));
+	return (0);
 }

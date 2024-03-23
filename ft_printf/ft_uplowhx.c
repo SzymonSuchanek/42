@@ -6,18 +6,20 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 21:51:44 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/22 23:32:32 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/03/23 17:10:32 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_lowhex(unsigned int nbr)
 {
 	int	len;
 
 	len = 0;
-	if (nbr > 16)
+	if (nbr == 0)
+		return (ft_print_char('0'));
+	else if (nbr >= 16)
 	{
 		ft_lowhex(nbr / 16);
 		ft_lowhex(nbr % 16);
@@ -42,7 +44,9 @@ int	ft_uphex(unsigned int nbr)
 	int	len;
 
 	len = 0;
-	if (nbr > 16)
+	if (nbr == 0)
+		return (ft_print_char('0'));
+	if (nbr >= 16)
 	{
 		ft_uphex(nbr / 16);
 		ft_uphex(nbr % 16);

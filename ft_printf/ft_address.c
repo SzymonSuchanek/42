@@ -6,18 +6,18 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:09:41 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/22 23:23:51 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:22:42 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_hexa(unsigned long nbr)
 {
 	int	len;
 
 	len = 0;
-	if (nbr > 16)
+	if (nbr >= 16)
 	{
 		ft_hexa(nbr / 16);
 		ft_hexa(nbr % 16);
