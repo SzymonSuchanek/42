@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:42:18 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/23 16:32:29 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:13:52 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,60 @@ int	ft_printf(const char *placeholders, ...)
 // 	unsigned int	og_function;
 // 	unsigned int	my_function;
 
-// 	ft_printf("Test with string\n");
+// 	ft_printf("*********************************\n");
+// 	ft_printf("*	Test with string	*\n");
+// 	ft_printf("*********************************\n");
 // 	og_function = printf("My name is %s, well %s ", a, b);
 // 	printf("%d\n", og_function);
 // 	my_function = ft_printf("My name is %s, well %s ", a, b);
-// 	printf("%d\n\n", my_function);
+// 	printf("%d\n", my_function);
+
+// 	char			a1[55] = "";
+// 	char			b1[55] = "NULL";
+// 	unsigned int	og_functiona1;
+// 	unsigned int	my_functionb1;
+
+// 	ft_printf("_________________________________\n");
+// 	og_functiona1 = printf("My name is %s, well %s ", a1, b1);
+// 	printf("%d\n", og_functiona1);
+// 	my_functionb1 = ft_printf("My name is %s, well %s ", a1, b1);
+// 	printf("%d\n", my_functionb1);
+
+// 	char			a2[55] = "\a";
+// 	char			b2[55] = "\b";
+// 	unsigned int	og_functiona2;
+// 	unsigned int	my_functionb2;
+
+// 	ft_printf("_________________________________\n");
+// 	og_functiona2 = printf("My name is %s, well %s ", a2, b2);
+// 	printf("%d\n", og_functiona2);
+// 	my_functionb2 = ft_printf("My name is %s, well %s ", a2, b2);
+// 	printf("%d\n\n\n\n", my_functionb2);
 
 // 	char			c = 'A';
 // 	char			d = 'e';
 // 	unsigned int	og_function3;
 // 	unsigned int	my_function4;
 
-// 	ft_printf("Test with characters\n");
+// 	ft_printf("*********************************\n");
+// 	ft_printf("*      Test with characters     *\n");
+// 	ft_printf("*********************************\n");
 // 	og_function3 = printf("My letter is %c, well don%c ", c, d);
 // 	printf("%d\n", og_function3);
 // 	my_function4 = ft_printf("My letter is %c, well don%c ", c, d);
-// 	printf("%d\n\n", my_function4);
+// 	printf("%d\n", my_function4);
+// 	ft_printf("_________________________________\n");
+
+// 	char			c1 = '\a';
+// 	char			d1 = '\b';
+// 	unsigned int	og_functionc1;
+// 	unsigned int	my_functiond1;
+
+// 	og_functionc1 = printf("My letter is %c, well don%c ", c1, d1);
+// 	printf("%d\n", og_functionc1);
+// 	my_functiond1 = ft_printf("My letter is %c, well don%c ", c1, d1);
+// 	printf("%d\n", my_functiond1);
+// 	ft_printf("_________________________________\n");
 
 // 	int			e = 64523;
 // 	int			f = -42613;
@@ -103,11 +141,12 @@ int	ft_printf(const char *placeholders, ...)
 // 	unsigned int	og_function7;
 // 	unsigned int	my_function8;
 
-
 // 	ft_printf("Test with address\n");
-// 	og_function7 = printf("My pointer address is %p, and %p ", address1, address2);
+// 	og_function7 = printf("My pointer address is %p, and %p ",
+//	address1, address2);
 // 	printf("%d\n", og_function7);
-// 	my_function8 = ft_printf("My pointer address is %p, and %p ", address1, address2);
+// 	my_function8 = ft_printf("My pointer address is %p, and %p ",
+//	address1, address2);
 // 	printf("%d\n\n", my_function8);
 
 // 	int			i = 64523;

@@ -6,12 +6,12 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:42:25 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/03/23 16:42:03 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:17:05 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # include <stdarg.h>
 # include <stdio.h>
 # include <unistd.h>
