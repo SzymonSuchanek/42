@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:31:38 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/04/01 19:00:07 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/04/03 20:59:32 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,67 @@
 void	histogram(char *str)
 {
 	int	i;
-	int	in_word;
-	int	len;
+	int	j;
+	int l;
+	int	wordlen;
+	int	len[25] = {0};
+	int	longestword;
+	int	k;
 
 	i = 0;
-	in_word = 0;
-	len = 0;
-	while (str[i] != '\0')
+	j = 0;
+	l = 0;
+	k = 1;
+	longestword = 0;
+	// while (str[i] != '\0')
+	// 	i++;
+	while (str[j])
 	{
-		while (str[i] != ' ' || str[i] != '\t')
+		wordlen = 0;
+		while (str[j] == ' ')
+			j++;
+		while (str[j] != ' ' && str[j] != '\0')
 		{
-			in_word = 1;
-			len++;
-			i++;
+			wordlen++;
+			j++;
 		}
-		i++;
+		if (wordlen > 0)
+		{
+			len[wordlen]++;
+			if (longestword < wordlen)
+				longestword = wordlen;
+		}
+	}
+	while (k <= longestword)
+	{
+		// while (len[k] == 0)
+		// {
+		// 	k++;
+		// }
+		printf("#%2d ", k);
+		while (l < len[k])
+		{
+			printf("⊡ ");
+			l++;
+		}
+		l = 0;
+		printf("\n");
+		k++;
 	}
 }
 
 int	main(void)
 {
-	char	
+	char *str;
 
+	str = "Send unlimited texts, photos, videos, "
+		"documents, and more to any ios, ipados, macos, "
+		"or watchOS device with iMessage, or use it to "
+		"send SMS and MMS messages.";
 	histogram(str);
 	return (0);
 }
+
+
+
+
