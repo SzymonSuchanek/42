@@ -2,29 +2,68 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   camel_to_snake.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2024/04/05 23:39:34 by ssuchane          #+#    #+#             */
 /*   Updated: 2024/04/05 23:44:13 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+
 void	camel_to_snake(char *str)
 {
-	char	*dest;
-	int		i;
+	char *dest;
+	int i;
+	int j;
+	int count;
 
+	i = 0;
+	j = 0;
+	count = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+		{
+			count++;
+		}
+		i++;
+	}
+	dest = (char *)malloc(sizeof(char) * (i + count + 1));
+	if (!dest)
+		return ;
 	i = 0;
 	while (str[i] != '\0')
-		i++;
-	dest = (char *)malloc(sizeof(char) * (i + 1));
-	if (!dest)
-		return (NULL);
-	i = 0;
-	while (str[i] => )
+	{
+		dest[j++] = str[i++];
+		if (str[i] >= 'A' && str[i] <= 'Z')
+		{
+			dest[j++] = '_';
+			str[i] += 32;
+		}
+	}
+	dest[j] = '\0';
+	write(1, dest, j);
+	free(dest);
 }
 
+int	main(int argc, char *argv[])
+{
+	if (argc != 2)
+		write(1, "\n", 1);
+	else if (argv[1])
+	{
+		camel_to_snake(argv[1]);
+		write(1, "\n", 1);
+	}
+	return (0);
+}
 
 // Assignment name  : camel_to_snake
 // Expected files   : camel_to_snake.c
@@ -37,7 +76,8 @@ void	camel_to_snake(char *str)
 // A lowerCamelCase string is a string where each word begins with a capital letter
 // except for the first one.
 
-// A snake_case string is a string where each word is in lower case, separated by
+// A snake_case string is a string where each word is in lower case,
+//	separated by
 // an underscore "_".
 
 // Examples:
