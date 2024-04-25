@@ -1,40 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   max.c                                              :+:      :+:    :+:   */
+/*   wd_match.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 19:54:02 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/04/09 17:19:01 by ssuchane         ###   ########.fr       */
+/*   Created: 2024/04/09 12:42:49 by ssuchane          #+#    #+#             */
+/*   Updated: 2024/04/09 13:26:12 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdio.h>
 
-int	max(int *tab, unsigned int len)
+void	wdmatch(char *s1, char *s2)
 {
-	unsigned int	i;
-	int				big;
+	int	i;
+	int	j;
+	int	len;
 
 	i = 0;
-	big = tab[i];
-	if (len < 1)
-		return (0);
-	while (i < len)
+	j = 0;
+	len = 0;
+	while (s1[i])
 	{
-		if (tab[i] > big)
-			big = tab[i];
 		i++;
+		len++;
 	}
-	return (big);
+	i = 0;
+	while (s1[i] && s2[j])
+	{
+		if (s1[i] == s2[j])
+			i++;
+		j++;
+	}
+	if (i == len)
+	{
+		write (1, s1, len);
+		write (1, "\n", 1);
+	}
+	else
+		write (1, "\n", 1);
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
-	int	len = 5;
-	int	tab[5] = {-120, -15, -25, -4, -5};
-
-	printf("%d", max(tab, len));
+	if (argc != 3)
+		write(1, "\n", 1);
+	else
+		wdmatch(argv[1], argv[2]);
 	return (0);
 }

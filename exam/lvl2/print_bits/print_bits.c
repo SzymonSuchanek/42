@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   max.c                                              :+:      :+:    :+:   */
+/*   print_bits.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 19:54:02 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/04/09 17:19:01 by ssuchane         ###   ########.fr       */
+/*   Created: 2024/04/09 12:06:32 by ssuchane          #+#    #+#             */
+/*   Updated: 2024/04/09 17:17:13 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <unistd.h>
 
-int	max(int *tab, unsigned int len)
+void	print_bits(unsigned char octet)
 {
-	unsigned int	i;
-	int				big;
+	int	i;
 
-	i = 0;
-	big = tab[i];
-	if (len < 1)
-		return (0);
-	while (i < len)
+	i = 7;
+	while (0 <= i)
 	{
-		if (tab[i] > big)
-			big = tab[i];
-		i++;
+		if ((octet >> i) & 1)
+			write(1, "1", 1);
+		else
+			write(1, "0", 1);
+		i--;
 	}
-	return (big);
 }
 
 int	main(void)
 {
-	int	len = 5;
-	int	tab[5] = {-120, -15, -25, -4, -5};
+	unsigned int	number;
 
-	printf("%d", max(tab, len));
+	number = 5;
+	print_bits(number);
 	return (0);
 }
+

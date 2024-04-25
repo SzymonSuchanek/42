@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   max.c                                              :+:      :+:    :+:   */
+/*   reverse_bits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 19:54:02 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/04/09 17:19:01 by ssuchane         ###   ########.fr       */
+/*   Created: 2024/04/09 16:24:28 by ssuchane          #+#    #+#             */
+/*   Updated: 2024/04/09 17:15:48 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	max(int *tab, unsigned int len)
+unsigned char	reverse_bits(unsigned char octet)
 {
-	unsigned int	i;
-	int				big;
+	int				i;
+	unsigned char	result;
 
-	i = 0;
-	big = tab[i];
-	if (len < 1)
-		return (0);
-	while (i < len)
+	i = 8;
+	result = 0;
+	while (i > 0)
 	{
-		if (tab[i] > big)
-			big = tab[i];
-		i++;
+		result = result * 2 + (octet % 2);
+		octet = octet / 2;
+		i--;
 	}
-	return (big);
+	return (result);
 }
 
 int	main(void)
 {
-	int	len = 5;
-	int	tab[5] = {-120, -15, -25, -4, -5};
+	unsigned char	c;
 
-	printf("%d", max(tab, len));
+	c = 'a';
+	printf("%c", reverse_bits(c));
 	return (0);
 }
