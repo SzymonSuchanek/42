@@ -6,11 +6,51 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 19:26:27 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/04/09 19:28:02 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/04/26 14:36:34 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 
+void	rstr_capitalizer(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] >= 'A' && s[i] <= 'Z')
+			s[i] += 32;
+		i++;
+	}
+	i = 0;
+	while (s[i])
+	{
+		if ((s[i] >= 'a' && s[i] <= 'z')
+			&& !(s[i + 1] >= 'a' && s[i + 1] <= 'z'))
+			s[i] -= 32;
+		write(1, &s[i], 1);
+		i++;
+	}
+}
+
+int	main(int argc, char *argv[])
+{
+	int	i;
+
+	i = 1;
+	if (argc < 2)
+		write(1, "\n", 1);
+	else if (argv[i])
+	{
+		while (argv[i])
+		{
+			rstr_capitalizer(argv[i]);
+			write(1, "\n", 1);
+			i++;
+		}
+	}
+}
 
 
 

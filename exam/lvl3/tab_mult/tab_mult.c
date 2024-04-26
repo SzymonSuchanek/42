@@ -6,11 +6,70 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 19:29:17 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/04/09 19:29:28 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:11:47 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+int	atoi(char *s)
+{
+	int	i;
+	int	result;
+
+	i = 0;
+	result = 0;
+	while (s[i])
+	{
+		result = result * 10 + (s[i] - '0');
+		i++;
+	}
+	return (result);
+}
+
+void	putnbr(int	n)
+{
+	if (n > 9)
+	{
+		putnbr(n / 10);
+		putnbr(n % 10);
+	}
+	else if (n < 10)
+		ft_putchar(n + '0');
+}
+
+void	tab_mult(int n)
+{
+	int	i;
+	int	result;
+
+	i = 1;
+	while (i < 10)
+	{
+		result = n * i;
+		ft_putchar(i + '0');
+		write(1, " x ", 3);
+		ft_putchar(n + '0');
+		write(1, " = ", 3);
+		putnbr(result);
+		ft_putchar('\n');
+		i++;
+	}
+}
+
+int	main(int argc, char *argv[])
+{
+	if (argc < 2)
+		write(1, "\n", 1);
+	else if (argv[1])
+		tab_mult(atoi(argv[1]));
+	return (0);
+}
 
 
 
