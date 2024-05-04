@@ -6,11 +6,12 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:49:41 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/04/26 19:33:13 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/04/27 12:57:26 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 
 void	rev_wstr(char *s)
 {
@@ -24,19 +25,23 @@ void	rev_wstr(char *s)
 	i = i - 1;
 	while (i >= 0)
 	{
-		while (s[i] != ' ')
+		if (!s[i])
+			break ;
+		while (i >= 0 && s[i] != ' ')
 		{
 			i--;
-			k = i;
 		}
-		while (s[k] != ' ')
+		k = i + 1;
+		while (k <= i || (s[k] && s[k] != ' '))
 		{
 			write(1, &s[k], 1);
 			k++;
 		}
-		write(1, " ", 1);
+		if (i >= 0)
+			write(1, " ", 1);
 		i--;
 	}
+	write(1, "\n", 1);
 }
 
 int	main(int argc, char *argv[])

@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:31:38 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/04/03 22:15:53 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/04/27 19:22:12 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	histogram(char *str)
 {
+	int	i;
 	int	j;
 	int l;
 	int	wordlen;

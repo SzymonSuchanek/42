@@ -6,12 +6,71 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:50:24 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/04/26 17:50:29 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:50:15 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include <stdlib.h>
 
+void	rostring(char *s)
+{
+	int	i;
+	int	j;
 
+	i = 0;
+	j = 0;
+	if (s[i])
+	{
+		while (s[i] == ' ' || s[i] == '\t')
+		{
+			i++;
+			j = i;
+		}
+		while (s[i] != ' ' && s[i] != '\t')
+			i++;
+		while (s[i] == ' ' || s[i] == '\t')
+			i++;
+		if (s[i] == '\0')
+		{
+			while (s[j] != ' ' && s[j] != '\t')
+			{
+				write(1, &s[j], 1);
+				j++;
+			}
+			return ;
+		}
+	}
+	while (s[i])
+	{
+		while (s[i] == ' ' || s[i] == '\t')
+		{
+			i++;
+			if (s[i] != ' ' && s[i] != '\t')
+				write(1, " ", 1);
+		}
+		write(1, &s[i], 1);
+		if (s[i + 1] == '\0')
+		{
+			write(1, " ", 1);
+			while (s[j] != ' ' && s[j] != '\t')
+			{
+				write(1, &s[j], 1);
+				j++;
+			}
+		}
+		i++;
+	}
+}
+
+int	main(int argc, char *argv[])
+{
+	if (argc < 2)
+		write(1, "\n", 1);
+	else if (argv[1])
+		rostring(argv[1]);
+	return (0);
+}
 
 // Assignment name  : rostring
 // Expected files   : rostring.c

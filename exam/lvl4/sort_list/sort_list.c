@@ -6,17 +6,40 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:51:08 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/04/26 17:51:12 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/05/04 13:20:25 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include "list.h"
 
+t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
+{
+	int		swap;
+	t_list	*tmp;
+
+	tmp = lst;
+	while (lst->next != NULL)
+	{
+		if (((*cmp)(lst->data, lst->next->data)) == 0)
+		{
+			swap = lst->data;
+			lst->data = lst->next->data;
+			lst->next->data = swap;
+			lst = tmp;
+		}
+		else
+			lst = lst->next;
+	}
+	lst = tmp;
+	return (lst);
+}
 
 
 // Assignment name  : sort_list
 // Expected files   : sort_list.c
 // Allowed functions:
-// --------------------------------------------------------------------------------
+// ------------------------------------------------------------------
 
 // Write the following functions:
 
