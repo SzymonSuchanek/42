@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 19:44:56 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/05/07 20:00:42 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/05/07 20:22:26 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,39 @@ char	*reverseWords(char *s)
 {
 	int		i;
 	int		j;
-	int		save;
+	int		k;
 	int		len;
 	char	*result;
+	int		start;
+	int		end;
 
 	len = strlen(s);
 	i = len - 1;
 	j = 0;
-	result = (char *)malloc(sizeof(char) * len + 2);
+	result = (char *)malloc(sizeof(char) * (len + 1));
 	if (!result)
 		return (NULL);
-	while (s[j])
+	while (i >= 0)
 	{
-		while (s[j] == ' ')
-			j--;
-		while (s[j] && s[j] != ' ')
+		while (i >= 0 && s[i] == ' ')
+			i--;
+		if (i < 0)
+			break ;
+		if (j != 0)
+			result[j++] = ' ';
+		end = i;
+		while (i >= 0 && s[i] != ' ')
+			i--;
+		start = i + 1;
+		k = start;
+		while (k <= end)
 		{
-			j--;
-			save = j + 1;
-		}
-		while (s[save] != ' ')
-		{
-			result[i++] = s[save++];
-			if (s[save + 1] == ' ')
-				result[i++] = ' ';
+			result[j] = s[k];
+			j++;
+			k++;
 		}
 	}
-	result[i] = '\0';
+	result[j] = '\0';
 	return (result);
 }
 
